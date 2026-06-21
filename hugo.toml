@@ -8,6 +8,13 @@ disableHugoGeneratorInject = true
 [outputs]
 home = ["HTML", "RSS", "JSON"]
 
+[markup.goldmark.extensions.passthrough]
+enable = true
+
+[markup.goldmark.extensions.passthrough.delimiters]
+block = [["$$", "$$"]]
+inline = [["\\(", "\\)"]]
+
 [params]
 description = "Starless is a small Hugo theme for dark, text first sites."
 sidebarFooter = "Built with Hugo."
@@ -35,3 +42,9 @@ name = "Files"
 pageRef = "/docs/files"
 parent = "Guide"
 weight = 13
+
+[[menus.main]]
+name = "How it looks?"
+pageRef = "/docs/how-it-looks"
+parent = "Guide"
+weight = 14
