@@ -8,7 +8,7 @@
       {{- if .IsSection -}}
         {{- with .Pages.ByWeight -}}
           <div class="ml-6 flex flex-col gap-1 text-on-surface-variant text-label-sm tree-item mt-1 mb-2">
-            {{ partial "menu-tree.html" (dict "nodes" . "level" (add $.level 1)) }}
+            {{ partial "explorer-tree.html" (dict "nodes" . "level" (add $.level 1)) }}
           </div>
         {{- end -}}
       {{- end -}}
@@ -22,7 +22,7 @@
         </a>
         {{- with .Pages.ByWeight -}}
           <div class="ml-5 flex flex-col gap-1 text-on-surface-variant text-label-sm tree-item mt-1 italic">
-            {{ partial "menu-tree.html" (dict "nodes" . "level" (add $.level 1)) }}
+            {{ partial "explorer-tree.html" (dict "nodes" . "level" (add $.level 1)) }}
           </div>
         {{- end -}}
       </div>
