@@ -9,8 +9,8 @@
   </button>
 
   <nav class="flex flex-col gap-1 text-sm" aria-label="Primary">
-    {{ with site.Menus.main }}
-      {{ partial "menu-tree.html" . }}
+    {{ with site.Sections }}
+      {{ partial "menu-tree.html" (dict "nodes" . "level" 0) }}
     {{ end }}
   </nav>
 

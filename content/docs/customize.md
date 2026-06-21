@@ -6,7 +6,7 @@ weight = 12
 
 The fast path is to change four things in `hugo.toml`: `baseURL`, `title`, `params.sidebarFooter`, and `params.homeFooter`.
 
-Then adjust `menus.main`. The sidebar shape comes from the menu, so you do not need a special data file or extra config layer.
+Then adjust `title` and `weight` in your content files. The sidebar shape comes from the section tree, so you do not need a special data file or a menu block for each page.
 
 If you want a different voice on the homepage, edit `content/_index.md`. If you want layout changes, start in `themes/starless/layouts/_default/baseof.html`.
 
