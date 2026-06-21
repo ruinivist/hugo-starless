@@ -3,10 +3,10 @@
     <a class="font-display-lg text-display-lg text-on-surface" href="{{ `/` | relLangURL }}">{{ site.Title }}</a>
   </header>
 
-  <div class="relative">
-    <span class="material-symbols-outlined absolute left-2 top-1.5 text-on-surface-variant text-[18px]">search</span>
-    <input class="w-full bg-transparent text-on-surface border border-outline/30 rounded py-1.5 pl-8 pr-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-on-surface-variant/50 text-label-sm" placeholder="Search" type="text" aria-label="Search">
-  </div>
+  <button class="relative w-full bg-transparent text-on-surface border border-outline/30 rounded py-1.5 pl-8 pr-3 text-left focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-label-sm" type="button" data-search-open aria-haspopup="dialog">
+    <span class="material-symbols-outlined absolute left-2 top-1.5 text-on-surface-variant text-[18px]" aria-hidden="true">search</span>
+    <span class="text-on-surface-variant/70">Search</span>
+  </button>
 
   <nav class="flex flex-col gap-1 text-sm" aria-label="Primary">
     {{ with site.Menus.main }}
@@ -19,6 +19,4 @@
       {{ . }}
     </div>
   {{ end }}
-
-  {{/* ponytail: search stays visual-only until a real index is worth the runtime and markup */}}
 </aside>

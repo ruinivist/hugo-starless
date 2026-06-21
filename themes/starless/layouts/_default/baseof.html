@@ -91,6 +91,10 @@
         font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
       }
 
+      [hidden] {
+        display: none !important;
+      }
+
       .tree-item {
         position: relative;
       }
@@ -104,6 +108,20 @@
         width: 1px;
         background-color: rgba(234, 228, 226, 0.1);
       }
+
+      #search-dialog {
+        margin-top: 6rem;
+      }
+
+      #search-dialog::backdrop {
+        background: rgba(12, 11, 10, 0.86);
+      }
+
+      @media (max-width: 768px) {
+        #search-dialog {
+          margin-top: 1rem;
+        }
+      }
     </style>
   </head>
   <body class="bg-surface text-on-surface font-body-md min-h-screen flex antialiased">
@@ -113,5 +131,235 @@
         {{ block "main" . }}{{ end }}
       </main>
     </div>
+    <dialog id="search-dialog" class="w-[min(78rem,calc(100vw-2rem))] max-w-none bg-transparent p-0 text-on-surface backdrop:bg-surface/90">
+      <div class="flex flex-col gap-4">
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[20px]" aria-hidden="true">search</span>
+          <input id="search-input" class="w-full bg-surface-container-lowest/95 text-on-surface border border-outline/30 rounded py-2.5 pl-10 pr-12 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-on-surface-variant/60 text-body-md" type="text" placeholder="Search" autocomplete="off" spellcheck="false" aria-label="Search">
+          <button class="absolute right-2 top-2 inline-flex h-7 w-7 items-center justify-center rounded text-on-surface-variant hover:text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" type="button" data-search-close aria-label="Close search">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">close</span>
+          </button>
+        </div>
+        <div class="grid min-h-[28rem] max-h-[70vh] overflow-hidden rounded border border-outline/30 bg-surface-container-lowest/95 md:grid-cols-[minmax(14rem,24rem)_1fr]" data-search-panel hidden>
+          <div class="overflow-y-auto border-b border-outline/30 md:border-b-0 md:border-r" data-search-results></div>
+          <article class="overflow-y-auto p-6 md:p-8" data-search-preview>
+            <p class="text-on-surface-variant">Search</p>
+          </article>
+          <div class="flex min-h-[28rem] items-center justify-center p-6 text-center text-on-surface-variant md:col-span-2" data-search-message hidden></div>
+        </div>
+      </div>
+    </dialog>
+    <script>
+      (() => {
+        const dialog = document.getElementById("search-dialog");
+        const input = document.getElementById("search-input");
+        const panelEl = dialog.querySelector("[data-search-panel]");
+        const resultsEl = dialog.querySelector("[data-search-results]");
+        const previewEl = dialog.querySelector("[data-search-preview]");
+        const messageEl = dialog.querySelector("[data-search-message]");
+        const openButtons = document.querySelectorAll("[data-search-open]");
+        const closeButton = dialog.querySelector("[data-search-close]");
+        const indexUrl = "{{ "index.json" | relURL }}";
+        const flexSearchUrl = "{{ "js/flexsearch.bundle.min.js" | relURL }}";
+        const resultLimit = 10;
+        let searchIndex;
+        let ready;
+        let timer;
+
+        const loadScript = (src) => new Promise((resolve, reject) => {
+          if (window.FlexSearch) {
+            resolve();
+            return;
+          }
+          const existing = document.querySelector(`script[src="${src}"]`);
+          if (existing) {
+            existing.addEventListener("load", resolve, { once: true });
+            existing.addEventListener("error", reject, { once: true });
+            return;
+          }
+          const script = document.createElement("script");
+          script.src = src;
+          script.async = true;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+
+        const setup = () => {
+          if (ready) return ready;
+          ready = Promise.all([
+            loadScript(flexSearchUrl),
+            fetch(indexUrl).then((response) => {
+              if (!response.ok) throw new Error("Search index failed to load");
+              return response.json();
+            })
+          ]).then(([, docs]) => {
+            searchIndex = new window.FlexSearch.Document({
+              tokenize: "forward",
+              document: {
+                id: "id",
+                index: ["title", "summary", "content"],
+                store: ["id", "title", "url", "summary", "content"]
+              }
+            });
+            docs.forEach((doc) => searchIndex.add(doc));
+          });
+          return ready;
+        };
+
+        const hidePanel = () => {
+          panelEl.hidden = true;
+          resultsEl.hidden = false;
+          previewEl.hidden = false;
+          messageEl.hidden = true;
+          resultsEl.replaceChildren();
+          previewEl.replaceChildren();
+          messageEl.textContent = "";
+        };
+
+        const showMessage = (message) => {
+          panelEl.hidden = false;
+          resultsEl.hidden = true;
+          previewEl.hidden = true;
+          messageEl.hidden = false;
+          messageEl.textContent = message;
+        };
+
+        const showResultsPanel = () => {
+          panelEl.hidden = false;
+          resultsEl.hidden = false;
+          previewEl.hidden = false;
+          messageEl.hidden = true;
+          messageEl.textContent = "";
+        };
+
+        const snippet = (text, query) => {
+          const clean = (text || "").replace(/\s+/g, " ").trim();
+          if (!clean) return "";
+          const lower = clean.toLowerCase();
+          const needle = query.toLowerCase().split(/\s+/).find(Boolean) || query.toLowerCase();
+          const hit = lower.indexOf(needle);
+          const start = Math.max(0, hit - 140);
+          const end = Math.min(clean.length, start + 720);
+          return `${start ? "... " : ""}${clean.slice(start, end)}${end < clean.length ? " ..." : ""}`;
+        };
+
+        const highlight = (node, text, query) => {
+          const terms = query
+            .trim()
+            .split(/\s+/)
+            .filter(Boolean)
+            .sort((a, b) => b.length - a.length)
+            .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+          const pattern = terms.length && new RegExp(`(${terms.join("|")})`, "gi");
+
+          node.replaceChildren();
+          if (!pattern) {
+            node.textContent = text || "";
+            return;
+          }
+
+          String(text || "").split(pattern).forEach((part) => {
+            if (!part) return;
+            if (pattern.test(part)) {
+              const mark = document.createElement("mark");
+              mark.className = "rounded bg-primary-container px-0.5 text-on-primary-container";
+              mark.textContent = part;
+              node.appendChild(mark);
+            } else {
+              node.appendChild(document.createTextNode(part));
+            }
+            pattern.lastIndex = 0;
+          });
+        };
+
+        const showPreview = (doc, query) => {
+          previewEl.replaceChildren();
+          const title = document.createElement("a");
+          title.className = "block font-display-lg text-headline-md text-on-surface hover:text-primary transition-colors";
+          title.href = doc.url;
+          highlight(title, doc.title, query);
+
+          const summary = document.createElement("p");
+          summary.className = "mt-4 text-on-surface/90";
+          highlight(summary, doc.summary || "", query);
+
+          const body = document.createElement("p");
+          body.className = "mt-6 whitespace-pre-wrap text-on-surface-variant";
+          highlight(body, snippet(doc.content, query), query);
+
+          previewEl.append(title, summary, body);
+        };
+
+        const flattenResults = (groups) => {
+          const seen = new Map();
+          groups.forEach((group) => {
+            const weight = group.field === "title" ? 0 : group.field === "summary" ? 1 : 2;
+            group.result.forEach((item, offset) => {
+              const doc = item.doc;
+              const current = doc && seen.get(item.id);
+              if (!doc || (current && current.weight <= weight)) return;
+              seen.set(item.id, { doc, weight, offset });
+            });
+          });
+          return Array.from(seen.values())
+            .sort((a, b) => a.weight - b.weight || a.offset - b.offset)
+            .slice(0, resultLimit)
+            .map((item) => item.doc);
+        };
+
+        const runSearch = () => {
+          const query = input.value.trim();
+          if (!query) {
+            hidePanel();
+            return;
+          }
+          const matches = flattenResults(searchIndex.search(query, { enrich: true, limit: resultLimit }));
+          resultsEl.replaceChildren();
+          if (!matches.length) {
+            showMessage("No results");
+            return;
+          }
+          showResultsPanel();
+          matches.forEach((doc, index) => {
+            const link = document.createElement("a");
+            link.className = "block border-b border-outline/30 px-4 py-3 text-on-surface hover:bg-surface-container-low focus:bg-surface-container-low focus:outline-none";
+            link.href = doc.url;
+            link.textContent = doc.title;
+            link.addEventListener("mouseenter", () => showPreview(doc, query));
+            link.addEventListener("focus", () => showPreview(doc, query));
+            resultsEl.appendChild(link);
+            if (index === 0) showPreview(doc, query);
+          });
+        };
+
+        const queueSearch = () => {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            setup().then(runSearch).catch(() => showMessage("Search unavailable"));
+          }, 120);
+        };
+
+        openButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            if (!dialog.open) dialog.showModal();
+            requestAnimationFrame(() => input.focus());
+            setup().then(runSearch).catch(() => showMessage("Search unavailable"));
+          });
+        });
+
+        const resetSearch = () => {
+          input.value = "";
+          hidePanel();
+        };
+
+        closeButton.addEventListener("click", () => dialog.close());
+        dialog.addEventListener("close", resetSearch);
+        dialog.addEventListener("click", (event) => {
+          if (event.target === dialog) dialog.close();
+        });
+        input.addEventListener("input", queueSearch);
+      })();
+    </script>
   </body>
 </html>

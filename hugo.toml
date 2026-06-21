@@ -5,6 +5,9 @@ theme = "starless"
 enableRobotsTXT = true
 disableHugoGeneratorInject = true
 
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
 [params]
 description = "Starless is a small Hugo theme for dark, text first sites."
 sidebarFooter = "Built with Hugo."
