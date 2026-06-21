@@ -7,9 +7,17 @@ math = true
 
 Use this page as a glance test for the Markdown pieces that show up most often.
 
+# heading 1
+
+## heading 2
+
+### heading 3
+
+#### heading 4
+
 ## Text
 
-Plain text can include **bold**, *italic*, `inline code`, and [links](https://gohugo.io/).
+Plain text can include **bold**, _italic_, `inline code`, and [links](https://gohugo.io/).
 
 > A blockquote should stand apart from the surrounding text without needing extra layout.
 
@@ -46,11 +54,11 @@ $$
 
 ## Table
 
-| Feature | Markdown | Render check |
-| --- | --- | --- |
-| Inline code | `` `value` `` | `value` |
-| Strong text | `**bold**` | **bold** |
-| Emphasis | `*italic*` | *italic* |
+| Feature     | Markdown      | Render check |
+| ----------- | ------------- | ------------ |
+| Inline code | `` `value` `` | `value`      |
+| Strong text | `**bold**`    | **bold**     |
+| Emphasis    | `*italic*`    | _italic_     |
 
 ## Lists
 
