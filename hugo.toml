@@ -8,6 +8,9 @@ disableHugoGeneratorInject = true
 [outputs]
 home = ["HTML", "RSS", "JSON"]
 
+[markup.highlight]
+style = "gruvbox"
+
 [markup.goldmark.extensions.passthrough]
 enable = true
 
