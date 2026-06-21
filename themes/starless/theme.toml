@@ -1,0 +1,12 @@
+name = "starless"
+license = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "A minimal dark editorial Hugo theme."
+homepage = "https://example.org/"
+demosite = "https://example.org/"
+tags = ["blog", "minimal", "dark", "editorial"]
+features = ["blog", "docs", "responsive", "no-javascript"]
+min_version = "0.161.0"
+
+[author]
+name = "ruinivist"

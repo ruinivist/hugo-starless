@@ -1,0 +1,29 @@
+{{- range .ByWeight -}}
+  <div class="flex flex-col">
+    <a class="flex items-center {{ if .HasChildren }}text-on-surface{{ else }}text-on-surface-variant{{ end }} hover:text-primary transition-colors py-1 text-left w-full group" href="{{ .URL }}">
+      <span class="material-symbols-outlined text-[16px] mr-1 text-on-surface-variant group-hover:text-primary">{{ if .HasChildren }}expand_more{{ else }}chevron_right{{ end }}</span>
+      {{ .Name }}
+    </a>
+    {{- with .Children -}}
+      <div class="ml-6 flex flex-col gap-1 text-on-surface-variant text-label-sm tree-item mt-1 mb-2">
+        {{- range .ByWeight -}}
+          {{- if .HasChildren -}}
+            <div class="flex flex-col">
+              <a class="flex items-center hover:text-on-surface transition-colors py-0.5" href="{{ .URL }}">
+                <span class="material-symbols-outlined text-[14px] mr-1 text-on-surface-variant">expand_more</span>
+                {{ .Name }}
+              </a>
+              <div class="ml-5 flex flex-col gap-1 text-on-surface-variant text-label-sm tree-item mt-1 italic">
+                {{ range .Children.ByWeight }}
+                  <a class="hover:text-on-surface transition-colors py-0.5" href="{{ .URL }}">{{ .Name }}</a>
+                {{ end }}
+              </div>
+            </div>
+          {{- else -}}
+            <a class="hover:text-on-surface transition-colors py-0.5 italic" href="{{ .URL }}">{{ .Name }}</a>
+          {{- end -}}
+        {{- end -}}
+      </div>
+    {{- end -}}
+  </div>
+{{- end -}}

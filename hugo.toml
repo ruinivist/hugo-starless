@@ -1,0 +1,34 @@
+baseURL = "https://example.org/"
+locale = "en-us"
+title = "Starless"
+theme = "starless"
+enableRobotsTXT = true
+disableHugoGeneratorInject = true
+
+[params]
+description = "Starless is a small Hugo theme for dark, text first sites."
+sidebarFooter = "Built with Hugo."
+homeFooter = "Small on purpose."
+
+[[menus.main]]
+name = "Guide"
+pageRef = "/docs"
+weight = 10
+
+[[menus.main]]
+name = "Install"
+pageRef = "/docs/install"
+parent = "Guide"
+weight = 11
+
+[[menus.main]]
+name = "Customize"
+pageRef = "/docs/customize"
+parent = "Guide"
+weight = 12
+
+[[menus.main]]
+name = "Files"
+pageRef = "/docs/files"
+parent = "Guide"
+weight = 13
