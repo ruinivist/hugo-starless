@@ -101,7 +101,7 @@
     width: 100%;
     max-width: 80rem;
     margin-inline: auto;
-    padding: var(--space-16) var(--space-8);
+    padding: 0 var(--space-8);
     display: flex;
     gap: var(--space-16);
   }
@@ -110,17 +110,23 @@
     flex: 1;
     min-width: 0;
     max-width: 48rem;
-    padding-top: var(--space-2);
+    padding-block: calc(var(--space-16) + var(--space-2)) var(--space-16);
   }
 
   .site-sidebar {
     width: 18rem;
     flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     gap: var(--space-12);
+    padding-block: var(--space-16);
     padding-right: var(--space-8);
     border-right: 1px solid var(--line);
+    overflow: hidden;
     color: var(--text-muted);
   }
 
@@ -133,7 +139,11 @@
   .site-nav {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    min-height: 0;
     gap: var(--space-1);
+    overflow-y: auto;
+    padding-right: var(--space-3);
     font-size: 14px;
   }
 }
@@ -161,11 +171,6 @@
 
   .page-link:hover {
     color: var(--primary);
-  }
-
-  .page-link .material-symbols-outlined {
-    margin-left: var(--space-1);
-    font-size: 18px;
   }
 
   .rule {
@@ -277,7 +282,7 @@
   }
 
   .tree-link--nested {
-    padding-block: 0.125rem;
+    padding-block: 0;
   }
 
   .tree-link--nested:not(.tree-link--current):hover {
@@ -286,7 +291,7 @@
 
   .tree-link--leaf {
     display: block;
-    padding-block: 0.125rem;
+    padding-block: 0;
     font-style: italic;
   }
 
@@ -314,7 +319,7 @@
     margin: var(--space-1) 0 var(--space-2) var(--space-6);
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
+    gap: 0.125rem;
     color: var(--text-muted);
     font-size: 13px;
   }
@@ -480,6 +485,12 @@
     outline: none;
     background: var(--surface-low);
   }
+}
+
+.page-link .material-symbols-outlined {
+  margin-left: var(--space-1);
+  font-size: 16px;
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 20;
 }
 
 @layer prose {
@@ -660,14 +671,27 @@
 
     .site-sidebar {
       width: auto;
+      position: static;
+      top: auto;
+      height: auto;
+      padding-block: 0;
       padding-right: 0;
       padding-bottom: var(--space-8);
       border-right: 0;
       border-bottom: 1px solid var(--line);
+      overflow: visible;
     }
 
     .site-main {
       max-width: none;
+      padding-block: 0;
+    }
+
+    .site-nav {
+      flex: none;
+      min-height: auto;
+      overflow: visible;
+      padding-right: 0;
     }
 
     .search-dialog {
