@@ -20,5 +20,5 @@ inline = [["\\(", "\\)"]]
 
 [params]
 description = "Starless is a small Hugo theme for dark, text first sites."
-sidebarFooter = "Built with Hugo."
-homeFooter = "Small on purpose."
+sidebarFooter = "built with Hugo"
+homeFooter = "See you in another file!"
