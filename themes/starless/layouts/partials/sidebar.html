@@ -1,21 +1,21 @@
-<aside class="w-72 flex-shrink-0 flex flex-col gap-12 border-r border-on-surface/10 pr-8">
+<aside class="site-sidebar">
   <header>
-    <a class="font-display-lg text-display-lg text-on-surface" href="{{ `/` | relLangURL }}">{{ site.Title }}</a>
+    <a class="site-title" href="{{ `/` | relLangURL }}">{{ site.Title }}</a>
   </header>
 
-  <button class="relative w-full bg-transparent text-on-surface border border-outline/30 rounded py-1.5 pl-8 pr-3 text-left focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-[13px]" type="button" data-search-open aria-haspopup="dialog">
-    <span class="material-symbols-outlined absolute left-2 top-1.5 text-on-surface-variant text-[18px]" aria-hidden="true">search</span>
-    <span class="text-on-surface-variant/70">Search</span>
+  <button class="search-trigger" type="button" data-search-open aria-haspopup="dialog">
+    <span class="material-symbols-outlined" aria-hidden="true">search</span>
+    <span class="search-trigger-label">Search</span>
   </button>
 
-  <nav class="flex flex-col gap-1 text-[14px]" aria-label="Primary">
+  <nav class="site-nav" aria-label="Primary">
     {{ with site.Sections }}
       {{ partial "explorer-tree.html" (dict "nodes" . "level" 0 "currentPage" $) }}
     {{ end }}
   </nav>
 
   {{ with site.Params.sidebarFooter }}
-    <div class="mt-auto pt-8 font-display-lg italic text-on-surface-variant text-lg">
+    <div class="footer-note">
       {{ . }}
     </div>
   {{ end }}

@@ -1,14 +1,14 @@
 {{- range .nodes.ByWeight -}}
   {{- $isCurrent := eq .RelPermalink $.currentPage.RelPermalink -}}
   {{- if eq $.level 0 -}}
-    <div class="flex flex-col">
-      <a class="flex items-center {{ if $isCurrent }}text-primary{{ else if .IsSection }}text-on-surface{{ else }}text-on-surface-variant{{ end }} hover:text-primary transition-colors py-1 text-left w-full group" href="{{ .RelPermalink }}">
-        <span class="material-symbols-outlined text-[16px] mr-1 text-on-surface-variant group-hover:text-primary">{{ if .IsSection }}expand_more{{ else }}chevron_right{{ end }}</span>
+    <div class="tree-node">
+      <a class="tree-link{{ if .IsSection }} tree-link--section{{ end }}{{ if $isCurrent }} tree-link--current{{ end }}" href="{{ .RelPermalink }}">
+        <span class="material-symbols-outlined tree-icon">{{ if .IsSection }}expand_more{{ else }}chevron_right{{ end }}</span>
         {{ .LinkTitle }}
       </a>
       {{- if .IsSection -}}
         {{- with .Pages.ByWeight -}}
-          <div class="ml-6 flex flex-col gap-1 text-on-surface-variant text-[13px] tree-item mt-1 mb-2">
+          <div class="tree-children">
             {{ partial "explorer-tree.html" (dict "nodes" . "level" (add $.level 1) "currentPage" $.currentPage) }}
           </div>
         {{- end -}}
@@ -16,19 +16,19 @@
     </div>
   {{- else -}}
     {{- if .IsSection -}}
-      <div class="flex flex-col">
-        <a class="flex items-center {{ if $isCurrent }}text-primary{{ end }} hover:text-on-surface transition-colors py-0.5" href="{{ .RelPermalink }}">
-          <span class="material-symbols-outlined text-[14px] mr-1 text-on-surface-variant">expand_more</span>
+      <div class="tree-node">
+        <a class="tree-link tree-link--nested{{ if $isCurrent }} tree-link--current{{ end }}" href="{{ .RelPermalink }}">
+          <span class="material-symbols-outlined tree-icon tree-icon--small">expand_more</span>
           {{ .LinkTitle }}
         </a>
         {{- with .Pages.ByWeight -}}
-          <div class="ml-5 flex flex-col gap-1 text-on-surface-variant text-[13px] tree-item mt-1 italic">
+          <div class="tree-children tree-children--nested">
             {{ partial "explorer-tree.html" (dict "nodes" . "level" (add $.level 1) "currentPage" $.currentPage) }}
           </div>
         {{- end -}}
       </div>
     {{- else -}}
-      <a class="{{ if $isCurrent }}text-primary{{ end }} hover:text-on-surface transition-colors py-0.5 italic" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      <a class="tree-link tree-link--leaf{{ if $isCurrent }} tree-link--current{{ end }}" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
     {{- end -}}
   {{- end -}}
 {{- end -}}
