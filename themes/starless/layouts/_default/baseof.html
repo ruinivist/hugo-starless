@@ -14,46 +14,28 @@
     {{ if .Params.math }}
       <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     {{ end }}
+    {{- $palette := dict
+      "surface" "22 20 19"
+      "surface-container-lowest" "12 11 10"
+      "surface-container-low" "29 26 25"
+      "on-surface" "234 228 226"
+      "on-surface-variant" "210 199 197"
+      "primary" "209 140 129"
+      "primary-container" "91 44 35"
+      "on-primary-container" "255 218 207"
+      "outline" "150 141 138"
+    -}}
+    {{- $primaryCheckmark := printf "rgb(%s)" (replace (index $palette "primary") " " "%20") -}}
     <script>
+      const palette = {{ $palette | jsonify | safeJS }};
+
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
-            colors: {
-              surface: "#161413",
-              "surface-dim": "#161413",
-              "surface-bright": "#3d3937",
-              "surface-container-lowest": "#0c0b0a",
-              "surface-container-low": "#1d1a19",
-              "surface-container": "#211e1d",
-              "surface-container-high": "#2c2826",
-              "surface-container-highest": "#373130",
-              "on-surface": "#eae4e2",
-              "on-surface-variant": "#d2c7c5",
-              primary: "#d18c81",
-              "on-primary": "#3e1c15",
-              "primary-container": "#5b2c23",
-              "on-primary-container": "#ffdacf",
-              secondary: "#e2b8b1",
-              "on-secondary": "#412b26",
-              "secondary-container": "#5a413b",
-              "on-secondary-container": "#ffdacf",
-              tertiary: "#c9c3a3",
-              "on-tertiary": "#312e18",
-              "tertiary-container": "#48442c",
-              "on-tertiary-container": "#e6dfbc",
-              error: "#ffb4ab",
-              "on-error": "#690005",
-              "error-container": "#93000a",
-              "on-error-container": "#ffdad6",
-              background: "#161413",
-              "on-background": "#eae4e2",
-              outline: "#968d8a",
-              "outline-variant": "#4d4644",
-              "inverse-surface": "#eae4e2",
-              "inverse-on-surface": "#322f2e",
-              "inverse-primary": "#97483c"
-            },
+            colors: Object.fromEntries(
+              Object.entries(palette).map(([name, value]) => [name, `rgb(${value} / <alpha-value>)`])
+            ),
             borderRadius: {
               DEFAULT: "0.25rem",
               lg: "0.5rem",
@@ -90,6 +72,13 @@
       }
     </script>
     <style>
+      :root {
+        {{- range $name, $value := $palette }}
+        --color-{{ $name }}-rgb: {{ $value }};
+        {{- end }}
+        --checkbox-checkmark: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z' fill='{{ $primaryCheckmark }}'/%3e%3c/svg%3e");
+      }
+
       .material-symbols-outlined {
         font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
       }
@@ -109,7 +98,7 @@
         top: 0;
         bottom: 0;
         width: 1px;
-        background-color: rgba(234, 228, 226, 0.1);
+        background-color: rgb(var(--color-on-surface-rgb) / 0.1);
       }
 
       #search-dialog {
@@ -117,7 +106,7 @@
       }
 
       #search-dialog::backdrop {
-        background: rgba(12, 11, 10, 0.86);
+        background: rgb(var(--color-surface-container-lowest-rgb) / 0.86);
       }
 
       .highlight pre {
@@ -125,17 +114,17 @@
       }
 
       .prose.prose-invert {
-        --tw-prose-invert-body: rgba(234, 228, 226, 0.9);
-        --tw-prose-invert-headings: #eae4e2;
-        --tw-prose-invert-bold: #eae4e2;
-        --tw-prose-invert-links: #d18c81;
-        --tw-prose-invert-quotes: #d2c7c5;
-        --tw-prose-invert-quote-borders: rgba(209, 140, 129, 0.65);
-        --tw-prose-invert-counters: #d2c7c5;
-        --tw-prose-invert-bullets: #d2c7c5;
-        --tw-prose-invert-hr: rgba(234, 228, 226, 0.1);
-        --tw-prose-invert-th-borders: rgba(234, 228, 226, 0.18);
-        --tw-prose-invert-td-borders: rgba(234, 228, 226, 0.12);
+        --tw-prose-invert-body: rgb(var(--color-on-surface-rgb) / 0.9);
+        --tw-prose-invert-headings: rgb(var(--color-on-surface-rgb));
+        --tw-prose-invert-bold: rgb(var(--color-on-surface-rgb));
+        --tw-prose-invert-links: rgb(var(--color-primary-rgb));
+        --tw-prose-invert-quotes: rgb(var(--color-on-surface-variant-rgb));
+        --tw-prose-invert-quote-borders: rgb(var(--color-primary-rgb) / 0.65);
+        --tw-prose-invert-counters: rgb(var(--color-on-surface-variant-rgb));
+        --tw-prose-invert-bullets: rgb(var(--color-on-surface-variant-rgb));
+        --tw-prose-invert-hr: rgb(var(--color-on-surface-rgb) / 0.1);
+        --tw-prose-invert-th-borders: rgb(var(--color-on-surface-rgb) / 0.18);
+        --tw-prose-invert-td-borders: rgb(var(--color-on-surface-rgb) / 0.12);
       }
 
       .prose h1,
@@ -149,7 +138,7 @@
       .prose h1,
       .prose h2 {
         text-decoration: underline;
-        text-decoration-color: rgba(234, 228, 226, 0.35);
+        text-decoration-color: rgb(var(--color-on-surface-rgb) / 0.35);
         text-decoration-thickness: 1px;
         text-underline-offset: 0.18em;
       }
@@ -186,7 +175,7 @@
       }
 
       .prose :not(pre) > code {
-        color: #d18c81;
+        color: rgb(var(--color-primary-rgb));
         font-size: inherit;
         font-weight: 400;
       }
@@ -198,29 +187,29 @@
 
       .prose th,
       .prose td {
-        border: 1px solid rgba(234, 228, 226, 0.12);
+        border: 1px solid rgb(var(--color-on-surface-rgb) / 0.12);
         padding: 0.5rem 0.75rem;
       }
 
       .prose th {
-        border-color: rgba(234, 228, 226, 0.18);
+        border-color: rgb(var(--color-on-surface-rgb) / 0.18);
       }
 
       .prose hr {
-        border-color: rgba(234, 228, 226, 0.1);
+        border-color: rgb(var(--color-on-surface-rgb) / 0.1);
       }
 
       .prose input[type="checkbox"] {
-        accent-color: #d18c81;
-        background-color: #161413;
-        border-color: rgba(234, 228, 226, 0.45);
-        color: #d18c81;
+        accent-color: rgb(var(--color-primary-rgb));
+        background-color: rgb(var(--color-surface-rgb));
+        border-color: rgb(var(--color-on-surface-rgb) / 0.45);
+        color: rgb(var(--color-primary-rgb));
       }
 
       .prose input[type="checkbox"]:checked {
-        background-color: #161413;
-        background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z' fill='%23d18c81'/%3e%3c/svg%3e");
-        border-color: #d18c81;
+        background-color: rgb(var(--color-surface-rgb));
+        background-image: var(--checkbox-checkmark);
+        border-color: rgb(var(--color-primary-rgb));
       }
 
       @media (max-width: 768px) {
