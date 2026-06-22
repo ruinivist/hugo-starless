@@ -1,6 +1,6 @@
 baseURL = "https://example.org/"
 locale = "en-us"
-title = "Starless"
+title = "starless"
 theme = "starless"
 enableRobotsTXT = true
 disableHugoGeneratorInject = true
