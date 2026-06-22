@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="darkreader-lock">
+    <meta name="color-scheme" content="dark">
     <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
@@ -85,6 +86,35 @@
 
       [hidden] {
         display: none !important;
+      }
+
+      body {
+        margin: 0;
+        background: rgb(var(--color-surface-rgb));
+        color: rgb(var(--color-on-surface-rgb));
+      }
+
+      aside {
+        color: rgb(var(--color-on-surface-variant-rgb));
+      }
+
+      /* ponytail: pin first-paint colors so Dark Reader cannot repaint default blue UI before Tailwind loads. */
+      aside > header a,
+      aside nav > div > a,
+      [data-search-open],
+      #search-dialog input,
+      #search-dialog [data-search-close] {
+        color: rgb(var(--color-on-surface-rgb));
+      }
+
+      [data-search-open] {
+        background: transparent;
+        border: 1px solid rgb(var(--color-outline-rgb) / 0.3);
+      }
+
+      #search-dialog input {
+        background: rgb(var(--color-surface-container-lowest-rgb) / 0.95);
+        border: 1px solid rgb(var(--color-outline-rgb) / 0.3);
       }
 
       .tree-item {
