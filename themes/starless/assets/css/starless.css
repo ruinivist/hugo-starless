@@ -159,12 +159,18 @@
     margin-top: var(--space-12);
   }
 
+  .page-link,
+  .entry-title a,
+  .content a {
+    color: var(--primary);
+    font-style: italic;
+    text-decoration: none;
+  }
+
   .page-link {
     display: inline-flex;
     align-items: center;
     margin-bottom: var(--space-4);
-    color: var(--text-muted);
-    font-style: italic;
     font-size: 15px;
     transition: color 150ms ease;
   }
@@ -570,12 +576,6 @@
   .content strong {
     color: var(--text);
     font-weight: 700;
-  }
-
-  .content a {
-    color: var(--primary);
-    font-style: italic;
-    text-decoration: none;
   }
 
   .content blockquote {
