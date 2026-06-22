@@ -4,8 +4,9 @@ summary = "The short version of what Starless gives you and what it skips."
 weight = 10
 +++
 
-Starless gives you a homepage, section pages, single pages, and a sidebar explorer. That is the whole pitch.
+hey hey!
 
-It is meant for people who want a dark shell and plain content, not a huge pile of options. If you want every part configurable from front matter, you will outgrow this fast.
+well, it's a simple there, inspired off of (quartz)[https://quartz.jzhao.xyz/] which I've been using for
+the longest time with _way less_ bells and whistles and faster too ( cause hugo )
 
-The rest of this section covers setup, the few things worth changing, and the files that actually matter.
+Take a look at (how it looks)[fix this limk] and if you like what you see (install)[install]
