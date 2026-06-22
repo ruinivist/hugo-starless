@@ -10,7 +10,7 @@
 
   <nav class="flex flex-col gap-1 text-[14px]" aria-label="Primary">
     {{ with site.Sections }}
-      {{ partial "explorer-tree.html" (dict "nodes" . "level" 0) }}
+      {{ partial "explorer-tree.html" (dict "nodes" . "level" 0 "currentPage" $) }}
     {{ end }}
   </nav>
 
