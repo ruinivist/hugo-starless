@@ -1,21 +1,31 @@
 # starless
 
-Minimal Hugo theme and demo site.
+a minimal hugo theme
 
-## Run
+see it here: [starless.ruiny.de](https://starless.ruiny.de/)
 
-```bash
+![vermillion skies](content/docs/themes/vermillion-skies.png)
+
+## install
+
+If you're new to hugo, you can just clone and update the `content` folder.
+
+```sh
+git clone https://github.com/ruinivist/hugo-starless my-blog-name
+cd my-blog-name
 hugo server
 ```
 
-## Build
+If you already have a Hugo site and just want the theme
 
-```bash
-hugo
+```sh
+cd my-existing-site
+git clone https://github.com/ruinivist/hugo-starless /tmp/hugo-starless
+cp -r /tmp/hugo-starless/themes/starless ./themes/
+# in hugo.toml, set: theme = "starless"
+hugo server
 ```
 
-## Shape
+For config, see [customize](https://starless.ruiny.de/docs/customize/).
 
-- `themes/starless`: the theme
-- `content/`: the site about the theme
-- `theme-details/`: reference material
+For themes, see [themes](https://starless.ruiny.de/docs/themes/).
