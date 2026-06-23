@@ -19,6 +19,10 @@ title = "starless"
 # theme
 theme = "starless"
 
+[markup.highlight]
+# syntax highlighting theme
+style = "gruvbox"
+
 [params]
 # meta description
 description = "Starless is a small Hugo theme for dark, text first sites."
