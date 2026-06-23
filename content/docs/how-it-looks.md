@@ -38,7 +38,7 @@ console.log(total);
 
 ```toml
 [params]
-description = "Small on purpose."
+theme = "starless"
 ```
 
 ## Math
@@ -68,6 +68,8 @@ $$
 | Strong text | `**bold**`    | **bold**     |
 | Emphasis    | `*italic*`    | _italic_     |
 
+---
+
 ## Lists
 
 1. First ordered item
@@ -82,11 +84,3 @@ $$
 
 - [x] Task item done
 - [ ] Task item open
-
-## Rule
-
-Text before the rule.
-
----
-
-Text after the rule.

@@ -2,12 +2,8 @@
 title = "Starless"
 +++
 
-Starless is a small Hugo theme for dark, text first sites.
+hey hey!
 
-I built it to keep one shape and get out of the way: a left rail, a narrow reading column, and simple navigation.
+this is a theme inspired off of [Quartz](https://quartz.jzhao.xyz/) ( which I've been using for the longest time ) with way less bells and whistles and faster too (cause hugo)
 
-There is no asset pipeline here. No client side framework either. Just Hugo templates and enough styling to hold the page together.
-
-This site is both the demo and the docs. If something feels too clever, it probably does not belong in the theme.
-
-Start with the guide if you want to use it. It is short on purpose.
+Take a look at [how it looks](/docs/how-it-looks/) and if you like what you see, [install it](/docs/install/).

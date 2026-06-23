@@ -6,23 +6,36 @@ weight = 12
 
 ## A few options are exposed
 
-The fast path is to change four things in `hugo.toml`: `baseURL`, `title`, `params.sidebarFooter`, and `params.homeFooter`.
+```toml
+# site url
+baseURL = "https://example.org/"
 
-Then adjust `title` and `weight` in your content files. The sidebar explorer follows the section tree, so you do not need a special data file or a block for each page.
+# language
+locale = "en-us"
 
-If you want a different voice on the homepage, edit `content/_index.md`. If you want layout changes, start in `themes/starless/layouts/_default/baseof.html`.
+# sidebar + page title
+title = "starless"
 
-That is enough for most forks. The theme stays easier to live with if you change one obvious file at a time.
+# theme
+theme = "starless"
 
-## but you can just modify the files directly...
+[params]
+# meta description
+description = "Starless is a small Hugo theme for dark, text first sites."
 
-The files that matter are not hard to find.
+# sidebar footer
+sidebarFooter = "built with Hugo"
 
-- `hugo.toml` sets the theme, site title, and footer text.
-- `content/` holds the homepage and this short guide. Its section tree also drives the sidebar.
-- `themes/starless/layouts/_default/baseof.html` builds the page shell and the shared styling.
-- `themes/starless/layouts/partials/sidebar.html` renders the left rail.
-- `themes/starless/layouts/partials/explorer-tree.html` renders the nested section and page links.
-- `themes/starless/layouts/_default/home.html`, `list.html`, and `single.html` handle the main content area.
+# page footer
+homeFooter = "see you in another file!"
+```
 
-If you are trying to understand the theme, read those files in that order. There is not much else hiding off to the side.
+## or just modify files
+
+- `hugo.toml`: config file for some of the stuff ( as above )
+- `content/`: your blog content goes here
+- `themes/starless/layouts/_default/baseof.html`: base html file for the core layout, search, and shared stuff
+- `themes/starless/assets/css/starless.css`: css file for the theme styles, the color tokens are defined at the top
+- `themes/starless/layouts/partials/sidebar.html`: sidebar layout file
+- `themes/starless/layouts/partials/explorer-tree.html`: file for the nested sidebar links
+- `themes/starless/layouts/_default/home.html`, `list.html`, `single.html`: layout files for the different page types
