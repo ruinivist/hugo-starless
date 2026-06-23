@@ -1,4 +1,5 @@
-baseURL = "https://example.org/"
+# you would want to change this
+baseURL = "https://starless.ruiny.de/"
 locale = "en-us"
 title = "starless"
 theme = "starless"
