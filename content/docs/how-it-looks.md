@@ -1,7 +1,7 @@
 +++
 title = "How it looks?"
 summary = "A quick page for checking common Markdown rendering."
-weight = 14
+weight = 1
 math = true
 +++
 

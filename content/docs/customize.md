@@ -1,7 +1,7 @@
 +++
 title = "Customize"
 summary = "Change the title, explorer, and footer strings first. Leave the rest alone until it bothers you."
-weight = 12
+weight = 3
 +++
 
 ## A few options are exposed

@@ -1,7 +1,7 @@
 +++
 title = "Install"
 summary = "Start a Hugo site, copy the theme, and point the config at it."
-weight = 11
+weight = 2
 +++
 
 If you fork this repo, you already have the theme and the demo site in one place.
