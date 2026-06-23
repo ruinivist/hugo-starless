@@ -1,13 +1,23 @@
 +++
 title = "Install"
-summary = "Start a Hugo site, copy the theme, and point the config at it."
+summary = "Clone the repo and run Hugo."
 weight = 2
 +++
 
-If you fork this repo, you already have the theme and the demo site in one place.
+If you're new to hugo, you can just clone and update the `contents` folder.
 
-If you want to drop Starless into another Hugo site, copy the `themes/starless/` folder into that project and set `theme = "starless"` in `hugo.toml`.
+```sh
+git clone https://github.com/ruinivist/hugo-starless my-blog-name
+cd my-blog-name
+hugo server
+```
 
-After that, add an `_index.md` for each section you want listed and set `weight` in front matter to control order. The sidebar follows the `content/` tree automatically.
+If you already have a Hugo site and just want the theme
 
-Run `hugo server` and edit from there. The theme is simple enough that most changes show up where you expect.
+```sh
+cd my-existing-site
+git clone https://github.com/ruinivist/hugo-starless /tmp/hugo-starless
+cp -r /tmp/hugo-starless/themes/starless ./themes/
+# in hugo.toml, set: theme = "starless"
+hugo server
+```

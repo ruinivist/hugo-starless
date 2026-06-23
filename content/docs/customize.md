@@ -1,6 +1,6 @@
 +++
 title = "Customize"
-summary = "Change the title, explorer, and footer strings first. Leave the rest alone until it bothers you."
+summary = "Quick settings to all the way..."
 weight = 3
 +++
 
