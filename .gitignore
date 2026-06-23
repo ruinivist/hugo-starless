@@ -1,3 +1,4 @@
 theme-details
 public
 .hugo_build.lock
+.wrangler/
