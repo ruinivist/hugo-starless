@@ -5,6 +5,7 @@ title = "starless"
 theme = "starless"
 enableRobotsTXT = true
 disableHugoGeneratorInject = true
+enableGitInfo = true
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]

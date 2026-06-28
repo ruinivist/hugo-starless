@@ -10,6 +10,13 @@
     <hr class="rule">
   </div>
   <div class="footer-note page-footer">
-    {{ site.Params.homeFooter }}
+    {{ with .GitInfo }}
+      {{ $firstCommit := . }}
+      {{ with .Ancestors.Reverse }}
+        {{ $firstCommit = index . 0 }}
+      {{ end }}
+      <div class="page-footer-date">{{ $firstCommit.AuthorDate.Format "2 Jan, 06" }}</div>
+    {{ end }}
+    <div>{{ site.Params.homeFooter }}</div>
   </div>
 {{ end }}
