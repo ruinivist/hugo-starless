@@ -25,6 +25,7 @@
 
     --font-body: "JetBrains Mono", monospace;
     --font-display: "Cormorant Garamond", serif;
+    --font-accent: "Caveat", cursive;
     --text-body: 400 14px / 24px var(--font-body);
     --text-display: 400 42px / 1.2 var(--font-display);
     --text-headline: 400 24px / 32px var(--font-display);
@@ -218,8 +219,7 @@
 
   .footer-note {
     color: var(--text-muted);
-    font: 400 18px / 28px var(--font-display);
-    font-style: italic;
+    font: 400 20px / 28px var(--font-accent);
   }
 
   .site-sidebar .footer-note {
@@ -229,8 +229,9 @@
 
   .page-footer {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
     padding-top: var(--space-3);
     padding-bottom: var(--space-8);
   }
