@@ -5,7 +5,7 @@
     bottom: var(--space-4);
     right: var(--space-4);
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: var(--space-2);
     padding: var(--space-2) var(--space-3);
     border: 1px solid var(--outline);
@@ -13,6 +13,16 @@
     background: var(--surface-lowest-soft);
     color: var(--text-muted);
     font-size: 13px;
+  }
+
+  .theme-picker label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .theme-picker small {
+    color: var(--text-muted-faint);
   }
 
   .theme-picker select {
@@ -143,17 +153,20 @@
 
 </style>
 
-<label class="theme-picker">
-  theme
-  <select data-theme-picker>
-    <option value="vermillion-skies">vermillion skies</option>
-    <option value="classique">classique</option>
-    <option value="muted-blossom">muted blossom</option>
-    <option value="moss">moss</option>
-    <option value="ocean">ocean</option>
-    <option value="blossom">blossom</option>
-  </select>
-</label>
+<div class="theme-picker">
+  <label>
+    theme
+    <select data-theme-picker>
+      <option value="vermillion-skies">vermillion skies</option>
+      <option value="classique">classique</option>
+      <option value="muted-blossom">muted blossom</option>
+      <option value="moss">moss</option>
+      <option value="ocean">ocean</option>
+      <option value="blossom">blossom</option>
+    </select>
+  </label>
+  <small>Use &lt;- and -&gt; arrow keys to switch</small>
+</div>
 
 <script>
   (() => {
@@ -177,6 +190,13 @@
 
     applyTheme();
     picker.addEventListener("change", applyTheme);
+    document.addEventListener("keydown", (event) => {
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || !["ArrowLeft", "ArrowRight"].includes(event.key) || event.target.matches("input, textarea, select, [contenteditable]")) return;
+      event.preventDefault();
+      const offset = event.key === "ArrowLeft" ? -1 : 1;
+      picker.selectedIndex = (picker.selectedIndex + offset + picker.options.length) % picker.options.length;
+      applyTheme();
+    });
   })();
 </script>
 
