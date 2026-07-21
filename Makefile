@@ -1,4 +1,7 @@
-.PHONY: build deploy
+.PHONY: dev build deploy
+
+dev:
+	hugo server
 
 build:
 	hugo --gc --minify
