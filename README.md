@@ -20,7 +20,20 @@ If you already have a Hugo site and just want the theme
 cd my-existing-site
 git clone https://github.com/ruinivist/hugo-starless /tmp/hugo-starless
 cp -r /tmp/hugo-starless/themes/starless ./themes/
-# in hugo.toml, set: theme = "starless"
+```
+
+Add this to `hugo.toml`:
+
+```toml
+theme = "starless"
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+```
+
+The JSON home output powers search. Then run:
+
+```sh
 hugo server
 ```
 
