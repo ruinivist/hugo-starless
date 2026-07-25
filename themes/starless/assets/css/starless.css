@@ -24,7 +24,7 @@
     --outline: rgb(150 141 138 / 0.3);
 
     --font-body: "JetBrains Mono", monospace;
-    --font-display: "Cormorant Garamond", serif;
+    --font-display: "Alegreya", serif;
     --font-accent: "Caveat", cursive;
     --text-body: 400 14px / 24px var(--font-body);
     --text-display: 400 42px / 1.2 var(--font-display);
