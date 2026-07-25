@@ -1,34 +1,26 @@
 {{- range .nodes.ByWeight -}}
   {{- $isCurrent := eq .RelPermalink $.currentPage.RelPermalink -}}
-  {{- if eq $.level 0 -}}
+  {{- $isTop := eq $.level 0 -}}
+  {{- if .IsSection -}}
+    <details class="tree-node" open>
+      <summary class="tree-summary">
+        <span class="material-symbols-outlined tree-icon{{ if not $isTop }} tree-icon--small{{ end }}">expand_more</span>
+        <a class="tree-link {{ if $isTop }}tree-link--section{{ else }}tree-link--nested{{ end }}{{ if $isCurrent }} tree-link--current{{ end }}" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      </summary>
+      {{- with .Pages.ByWeight -}}
+        <div class="tree-children{{ if not $isTop }} tree-children--nested{{ end }}">
+          {{ partial "explorer-tree.html" (dict "nodes" . "level" (add $.level 1) "currentPage" $.currentPage) }}
+        </div>
+      {{- end -}}
+    </details>
+  {{- else if $isTop -}}
     <div class="tree-node">
-      <a class="tree-link{{ if .IsSection }} tree-link--section{{ end }}{{ if $isCurrent }} tree-link--current{{ end }}" href="{{ .RelPermalink }}">
-        <span class="material-symbols-outlined tree-icon">{{ if .IsSection }}expand_more{{ else }}chevron_right{{ end }}</span>
+      <a class="tree-link{{ if $isCurrent }} tree-link--current{{ end }}" href="{{ .RelPermalink }}">
+        <span class="material-symbols-outlined tree-icon">chevron_right</span>
         {{ .LinkTitle }}
       </a>
-      {{- if .IsSection -}}
-        {{- with .Pages.ByWeight -}}
-          <div class="tree-children">
-            {{ partial "explorer-tree.html" (dict "nodes" . "level" (add $.level 1) "currentPage" $.currentPage) }}
-          </div>
-        {{- end -}}
-      {{- end -}}
     </div>
   {{- else -}}
-    {{- if .IsSection -}}
-      <div class="tree-node">
-        <a class="tree-link tree-link--nested{{ if $isCurrent }} tree-link--current{{ end }}" href="{{ .RelPermalink }}">
-          <span class="material-symbols-outlined tree-icon tree-icon--small">expand_more</span>
-          {{ .LinkTitle }}
-        </a>
-        {{- with .Pages.ByWeight -}}
-          <div class="tree-children tree-children--nested">
-            {{ partial "explorer-tree.html" (dict "nodes" . "level" (add $.level 1) "currentPage" $.currentPage) }}
-          </div>
-        {{- end -}}
-      </div>
-    {{- else -}}
-      <a class="tree-link tree-link--leaf{{ if $isCurrent }} tree-link--current{{ end }}" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-    {{- end -}}
+    <a class="tree-link tree-link--leaf{{ if $isCurrent }} tree-link--current{{ end }}" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
   {{- end -}}
 {{- end -}}

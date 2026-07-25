@@ -272,6 +272,17 @@
     flex-direction: column;
   }
 
+  .tree-summary {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .tree-summary::-webkit-details-marker {
+    display: none;
+  }
+
   .tree-link {
     display: flex;
     align-items: center;
@@ -283,7 +294,7 @@
   }
 
   .tree-link:hover,
-  .tree-link:hover .tree-icon {
+  .tree-summary:hover .tree-icon {
     color: var(--primary);
   }
 
@@ -317,7 +328,11 @@
     margin-right: var(--space-1);
     color: var(--text-muted);
     font-size: 16px;
-    transition: color 150ms ease;
+    transition: color 150ms ease, transform 150ms ease;
+  }
+
+  .tree-node:not([open]) > .tree-summary > .tree-icon {
+    transform: rotate(-90deg);
   }
 
   .tree-icon--small {
