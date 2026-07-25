@@ -1,6 +1,6 @@
 +++
-title = "How it looks?"
-summary = "A quick page for checking common Markdown rendering."
+title = "Preview & themes"
+summary = "Preview common Markdown and try the included palettes."
 weight = 1
 math = true
 themePicker = true
@@ -9,6 +9,12 @@ themePicker = true
 Use this page as a glance test for the Markdown pieces that show up most often.
 
 {{< theme-picker >}}
+
+## Themes
+
+Choose a palette above, then copy its generated `:root` block into
+`themes/starless/assets/css/starless.css`. Set a matching syntax theme with
+`markup.highlight.style` in `hugo.toml`.
 
 # heading 1
 

@@ -4,8 +4,6 @@ a minimal hugo theme
 
 see it here: [starless.ruiny.de](https://starless.ruiny.de/)
 
-![vermillion skies](content/docs/themes/vermillion-skies.png)
-
 ## install
 
 If you're new to hugo, you can just clone and update the `content` folder.
@@ -28,4 +26,4 @@ hugo server
 
 For config, see [customize](https://starless.ruiny.de/docs/customize/).
 
-For themes, see [themes](https://starless.ruiny.de/docs/themes/).
+For a preview and themes, see [preview & themes](https://starless.ruiny.de/docs/how-it-looks/).
