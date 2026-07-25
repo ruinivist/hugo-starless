@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{ `css/chroma/evergarden.css` | relURL }}" data-chroma-theme="moss" disabled>
 <link rel="stylesheet" href="{{ `css/chroma/nord.css` | relURL }}" data-chroma-theme="ocean" disabled>
 <link rel="stylesheet" href="{{ `css/chroma/rose-pine-dawn.css` | relURL }}" data-chroma-theme="blossom" disabled>
+<link rel="stylesheet" href="{{ `css/chroma/onedark.css` | relURL }}" data-chroma-theme="ink" disabled>
 
 <style>
   .theme-picker {
@@ -137,6 +138,27 @@
     --line-strong: rgb(74 56 64 / 0.18);
     --outline: rgb(149 130 138 / 0.28);
   }
+
+  :root[data-theme="ink"] {
+    --surface: rgb(22 34 53);
+    --surface-low: rgb(35 48 68);
+    --surface-lowest-soft: rgb(14 26 45 / 0.95);
+    --surface-backdrop: rgb(14 26 45 / 0.86);
+    --text: rgb(244 245 246);
+    --text-soft: rgb(244 245 246 / 0.9);
+    --text-muted: rgb(182 197 214);
+    --text-muted-soft: rgb(182 197 214 / 0.7);
+    --text-muted-faint: rgb(182 197 214 / 0.6);
+    --text-underline: rgb(143 179 228 / 0.75);
+    --primary: rgb(143 179 228);
+    --primary-soft: rgb(143 179 228 / 0.65);
+    --primary-container: rgb(36 55 94);
+    --on-primary-container: rgb(222 234 250);
+    --line: rgb(143 179 228 / 0.13);
+    --line-soft: rgb(143 179 228 / 0.18);
+    --line-strong: rgb(143 179 228 / 0.28);
+    --outline: rgb(112 154 215 / 0.35);
+  }
 </style>
 
 <div class="theme-picker">
@@ -149,6 +171,7 @@
       <option value="moss" data-chroma-style="evergarden">moss</option>
       <option value="ocean" data-chroma-style="nord">ocean</option>
       <option value="blossom" data-chroma-style="rose-pine-dawn">blossom</option>
+      <option value="ink" data-chroma-style="onedark">ink</option>
     </select>
   </label>
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css" data-theme-code></code></pre></div>
