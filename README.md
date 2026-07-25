@@ -1,5 +1,7 @@
 # starless
 
+> I think this is pretty much in a "done" state now. I don't want bloat
+
 a minimal hugo theme
 
 see it here: [starless.ruiny.de](https://starless.ruiny.de/)
