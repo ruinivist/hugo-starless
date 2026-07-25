@@ -1,3 +1,10 @@
+<link rel="stylesheet" href="{{ `css/chroma/gruvbox.css` | relURL }}" data-chroma-theme="vermillion-skies">
+<link rel="stylesheet" href="{{ `css/chroma/github-dark.css` | relURL }}" data-chroma-theme="classique" disabled>
+<link rel="stylesheet" href="{{ `css/chroma/rose-pine-moon.css` | relURL }}" data-chroma-theme="muted-blossom" disabled>
+<link rel="stylesheet" href="{{ `css/chroma/evergarden.css` | relURL }}" data-chroma-theme="moss" disabled>
+<link rel="stylesheet" href="{{ `css/chroma/nord.css` | relURL }}" data-chroma-theme="ocean" disabled>
+<link rel="stylesheet" href="{{ `css/chroma/rose-pine-dawn.css` | relURL }}" data-chroma-theme="blossom" disabled>
+
 <style>
   .theme-picker {
     margin-block: var(--space-8);
@@ -144,7 +151,7 @@
       <option value="blossom">blossom</option>
     </select>
   </label>
-  <div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-css" data-lang="css" data-theme-code></code></pre></div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css" data-theme-code></code></pre></div>
 </div>
 
 <script>
@@ -152,6 +159,7 @@
     const root = document.documentElement;
     const picker = document.querySelector("[data-theme-picker]");
     const code = document.querySelector("[data-theme-code]");
+    const chromaThemes = document.querySelectorAll("[data-chroma-theme]");
     const properties = [
       "surface", "surface-low", "surface-lowest-soft", "surface-backdrop",
       "text", "text-soft", "text-muted", "text-muted-soft", "text-muted-faint", "text-underline",
@@ -161,6 +169,9 @@
 
     const applyTheme = () => {
       root.dataset.theme = picker.value;
+      chromaThemes.forEach((theme) => {
+        theme.disabled = theme.dataset.chromaTheme !== picker.value;
+      });
       const styles = getComputedStyle(root);
       const declarations = properties.map((property) =>
         `  --${property}: ${styles.getPropertyValue(`--${property}`).trim()};`

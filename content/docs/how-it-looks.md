@@ -3,6 +3,7 @@ title = "How it looks?"
 summary = "A quick page for checking common Markdown rendering."
 weight = 1
 math = true
+themePicker = true
 +++
 
 Use this page as a glance test for the Markdown pieces that show up most often.

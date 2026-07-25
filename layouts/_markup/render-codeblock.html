@@ -1,0 +1,5 @@
+{{ if .Page.Params.themePicker }}
+  {{ transform.Highlight .Inner .Type "noClasses=false" }}
+{{ else }}
+  {{ with transform.HighlightCodeBlock . }}{{ .Wrapped }}{{ end }}
+{{ end }}
