@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ `css/chroma/rose-pine-dawn.css` | relURL }}" data-chroma-theme="blossom" disabled>
 <link rel="stylesheet" href="{{ `css/chroma/onedark.css` | relURL }}" data-chroma-theme="ink" disabled>
 <link rel="stylesheet" href="{{ `css/chroma/catppuccin-latte.css` | relURL }}" data-chroma-theme="frost" disabled>
+<link rel="stylesheet" href="{{ `css/chroma/catppuccin-latte.css` | relURL }}" data-chroma-theme="classique-light" disabled>
 
 <style>
   .theme-picker {
@@ -182,6 +183,28 @@
     --line-strong: rgb(9 24 51 / 0.18);
     --outline: rgb(89 101 119 / 0.28);
   }
+
+  :root[data-theme="classique-light"] {
+    color-scheme: light;
+    --surface: rgb(241 236 233);
+    --surface-low: rgb(232 225 222);
+    --surface-lowest-soft: rgb(248 244 242 / 0.95);
+    --surface-backdrop: rgb(235 228 225 / 0.86);
+    --text: rgb(47 42 41);
+    --text-soft: rgb(47 42 41 / 0.9);
+    --text-muted: rgb(105 94 91);
+    --text-muted-soft: rgb(105 94 91 / 0.7);
+    --text-muted-faint: rgb(105 94 91 / 0.6);
+    --text-underline: rgb(118 85 80 / 0.75);
+    --primary: rgb(118 85 80);
+    --primary-soft: rgb(118 85 80 / 0.65);
+    --primary-container: rgb(225 208 203);
+    --on-primary-container: rgb(76 52 48);
+    --line: rgb(47 42 41 / 0.09);
+    --line-soft: rgb(47 42 41 / 0.12);
+    --line-strong: rgb(47 42 41 / 0.18);
+    --outline: rgb(126 115 112 / 0.3);
+  }
 </style>
 
 <div class="theme-picker">
@@ -196,6 +219,7 @@
       <option value="blossom" data-chroma-style="rose-pine-dawn">blossom</option>
       <option value="ink" data-chroma-style="onedark">ink</option>
       <option value="frost" data-chroma-style="catppuccin-latte">frost</option>
+      <option value="classique-light" data-chroma-style="catppuccin-latte">classique light</option>
     </select>
   </label>
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css" data-theme-code></code></pre></div>
