@@ -42,7 +42,7 @@
     --text-muted: rgb(203 192 188);
     --text-muted-soft: rgb(203 192 188 / 0.7);
     --text-muted-faint: rgb(203 192 188 / 0.6);
-    --text-underline: rgb(228 221 217 / 0.35);
+    --text-underline: rgb(190 170 166 / 0.75);
     --primary: rgb(190 170 166);
     --primary-soft: rgb(190 170 166 / 0.65);
     --primary-container: rgb(72 58 56);
@@ -63,7 +63,7 @@
     --text-muted: rgb(190 178 182);
     --text-muted-soft: rgb(190 178 182 / 0.7);
     --text-muted-faint: rgb(190 178 182 / 0.6);
-    --text-underline: rgb(226 221 222 / 0.35);
+    --text-underline: rgb(168 149 154 / 0.75);
     --primary: rgb(168 149 154);
     --primary-soft: rgb(168 149 154 / 0.65);
     --primary-container: rgb(77 62 68);
@@ -84,7 +84,7 @@
     --text-muted: rgb(185 191 176);
     --text-muted-soft: rgb(185 191 176 / 0.7);
     --text-muted-faint: rgb(185 191 176 / 0.6);
-    --text-underline: rgb(221 224 214 / 0.35);
+    --text-underline: rgb(169 178 145 / 0.75);
     --primary: rgb(169 178 145);
     --primary-soft: rgb(169 178 145 / 0.65);
     --primary-container: rgb(73 81 62);
@@ -96,29 +96,29 @@
   }
 
   :root[data-theme="ocean"] {
-    --surface: rgb(8 23 41);
-    --surface-low: rgb(12 29 49);
-    --surface-lowest-soft: rgb(5 16 29 / 0.95);
-    --surface-backdrop: rgb(5 16 29 / 0.86);
-    --text: rgb(220 228 242);
-    --text-soft: rgb(220 228 242 / 0.9);
-    --text-muted: rgb(175 188 208);
-    --text-muted-soft: rgb(175 188 208 / 0.7);
-    --text-muted-faint: rgb(175 188 208 / 0.6);
-    --text-underline: rgb(220 228 242 / 0.35);
-    --primary: rgb(172 190 218);
-    --primary-soft: rgb(172 190 218 / 0.65);
-    --primary-container: rgb(59 79 110);
-    --on-primary-container: rgb(229 236 247);
-    --line: rgb(220 228 242 / 0.1);
-    --line-soft: rgb(220 228 242 / 0.12);
-    --line-strong: rgb(220 228 242 / 0.18);
-    --outline: rgb(130 145 168 / 0.3);
+    --surface: rgb(10 16 27);
+    --surface-low: rgb(20 28 43);
+    --surface-lowest-soft: rgb(7 12 21 / 0.95);
+    --surface-backdrop: rgb(7 12 21 / 0.86);
+    --text: rgb(226 229 235);
+    --text-soft: rgb(226 229 235 / 0.9);
+    --text-muted: rgb(170 178 193);
+    --text-muted-soft: rgb(170 178 193 / 0.7);
+    --text-muted-faint: rgb(170 178 193 / 0.6);
+    --text-underline: rgb(145 173 255 / 0.75);
+    --primary: rgb(145 173 255);
+    --primary-soft: rgb(145 173 255 / 0.65);
+    --primary-container: rgb(32 46 79);
+    --on-primary-container: rgb(229 235 255);
+    --line: rgb(145 173 255 / 0.13);
+    --line-soft: rgb(145 173 255 / 0.18);
+    --line-strong: rgb(145 173 255 / 0.28);
+    --outline: rgb(113 135 181 / 0.45);
   }
 
   :root[data-theme="blossom"] {
     color-scheme: light;
-    --surface: rgb(251 246 246);
+    --surface: #eee8e9;
     --surface-low: rgb(245 238 239);
     --surface-lowest-soft: rgb(255 250 251 / 0.95);
     --surface-backdrop: rgb(255 247 249 / 0.86);
@@ -127,9 +127,9 @@
     --text-muted: rgb(125 102 111);
     --text-muted-soft: rgb(125 102 111 / 0.7);
     --text-muted-faint: rgb(125 102 111 / 0.6);
-    --text-underline: rgb(74 56 64 / 0.22);
-    --primary: rgb(195 131 154);
-    --primary-soft: rgb(195 131 154 / 0.65);
+    --text-underline: rgb(163 63 91 / 0.75);
+    --primary: rgb(163 63 91);
+    --primary-soft: rgb(163 63 91 / 0.65);
     --primary-container: rgb(248 221 229);
     --on-primary-container: rgb(114 53 76);
     --line: rgb(74 56 64 / 0.09);
@@ -143,15 +143,16 @@
   <label for="theme-picker">
     theme
     <select id="theme-picker" data-theme-picker>
-      <option value="vermillion-skies">vermillion skies</option>
-      <option value="classique">classique</option>
-      <option value="muted-blossom">muted blossom</option>
-      <option value="moss">moss</option>
-      <option value="ocean">ocean</option>
-      <option value="blossom">blossom</option>
+      <option value="vermillion-skies" data-chroma-style="gruvbox">vermillion skies</option>
+      <option value="classique" data-chroma-style="github-dark">classique</option>
+      <option value="muted-blossom" data-chroma-style="rose-pine-moon">muted blossom</option>
+      <option value="moss" data-chroma-style="evergarden">moss</option>
+      <option value="ocean" data-chroma-style="nord">ocean</option>
+      <option value="blossom" data-chroma-style="rose-pine-dawn">blossom</option>
     </select>
   </label>
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css" data-theme-code></code></pre></div>
+  <p>Chroma theme: <code data-chroma-style-output></code></p>
 </div>
 
 <script>
@@ -159,6 +160,7 @@
     const root = document.documentElement;
     const picker = document.querySelector("[data-theme-picker]");
     const code = document.querySelector("[data-theme-code]");
+    const chromaStyle = document.querySelector("[data-chroma-style-output]");
     const chromaThemes = document.querySelectorAll("[data-chroma-theme]");
     const properties = [
       "surface", "surface-low", "surface-lowest-soft", "surface-backdrop",
@@ -169,6 +171,7 @@
 
     const applyTheme = () => {
       root.dataset.theme = picker.value;
+      chromaStyle.textContent = picker.selectedOptions[0].dataset.chromaStyle;
       chromaThemes.forEach((theme) => {
         theme.disabled = theme.dataset.chromaTheme !== picker.value;
       });

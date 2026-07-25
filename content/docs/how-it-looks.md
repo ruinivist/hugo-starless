@@ -13,7 +13,7 @@ Use this page as a glance test for the Markdown pieces that show up most often.
 ## Themes
 
 Choose a palette above, then copy its generated `:root` block into
-`themes/starless/assets/css/starless.css`. Set a matching syntax theme with
+`themes/starless/assets/css/starless.css`. Set the shown Chroma theme as
 `markup.highlight.style` in `hugo.toml`.
 
 # heading 1
