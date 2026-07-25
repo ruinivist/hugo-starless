@@ -93,6 +93,41 @@
   .highlight pre {
     padding: var(--space-2) var(--space-4);
   }
+
+  .highlight {
+    position: relative;
+  }
+
+  .code-copy {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface-lowest-soft);
+    color: var(--text-muted-faint);
+    opacity: 0;
+    transition: opacity 150ms ease;
+  }
+
+  .highlight:hover .code-copy {
+    opacity: 0.8;
+  }
+
+  .code-copy:focus-visible {
+    opacity: 1;
+  }
+
+}
+
+.code-copy .material-symbols-outlined {
+  font-size: 18px;
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 20;
 }
 
 @layer layout {

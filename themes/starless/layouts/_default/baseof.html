@@ -43,6 +43,16 @@
       </div>
     </dialog>
     <script>
+      document.querySelectorAll(".content .highlight").forEach((block) => {
+        const button = document.createElement("button");
+        button.className = "code-copy";
+        button.type = "button";
+        button.title = button.ariaLabel = "Copy code";
+        button.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">content_copy</span>';
+        button.addEventListener("click", () => navigator.clipboard.writeText(block.querySelector("code").textContent));
+        block.appendChild(button);
+      });
+
       (() => {
         const dialog = document.getElementById("search-dialog");
         const input = document.getElementById("search-input");
