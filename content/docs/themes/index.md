@@ -41,7 +41,6 @@ These are the theme color tokens:
   --line: rgb(234 228 226 / 0.1);
   --line-soft: rgb(234 228 226 / 0.12);
   --line-strong: rgb(234 228 226 / 0.18);
-  --checkbox-border: rgb(234 228 226 / 0.45);
   --outline: rgb(150 141 138 / 0.3);
 }
 ```
@@ -72,7 +71,6 @@ These are the theme color tokens:
   --line: rgb(228 221 217 / 0.1);
   --line-soft: rgb(228 221 217 / 0.12);
   --line-strong: rgb(228 221 217 / 0.18);
-  --checkbox-border: rgb(228 221 217 / 0.45);
   --outline: rgb(147 138 135 / 0.3);
 }
 ```
@@ -103,7 +101,6 @@ These are the theme color tokens:
   --line: rgb(226 221 222 / 0.1);
   --line-soft: rgb(226 221 222 / 0.12);
   --line-strong: rgb(226 221 222 / 0.18);
-  --checkbox-border: rgb(226 221 222 / 0.45);
   --outline: rgb(139 130 134 / 0.3);
 }
 ```
@@ -134,7 +131,6 @@ These are the theme color tokens:
   --line: rgb(221 224 214 / 0.1);
   --line-soft: rgb(221 224 214 / 0.12);
   --line-strong: rgb(221 224 214 / 0.18);
-  --checkbox-border: rgb(221 224 214 / 0.45);
   --outline: rgb(136 143 129 / 0.3);
 }
 ```
@@ -165,7 +161,6 @@ These are the theme color tokens:
   --line: rgb(220 228 242 / 0.1);
   --line-soft: rgb(220 228 242 / 0.12);
   --line-strong: rgb(220 228 242 / 0.18);
-  --checkbox-border: rgb(220 228 242 / 0.45);
   --outline: rgb(130 145 168 / 0.3);
 }
 ```
@@ -196,7 +191,6 @@ These are the theme color tokens:
   --line: rgb(74 56 64 / 0.09);
   --line-soft: rgb(74 56 64 / 0.12);
   --line-strong: rgb(74 56 64 / 0.18);
-  --checkbox-border: rgb(125 102 111 / 0.45);
   --outline: rgb(149 130 138 / 0.28);
 }
 ```

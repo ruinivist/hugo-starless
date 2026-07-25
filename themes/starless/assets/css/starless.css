@@ -20,7 +20,6 @@
     --line: rgb(234 228 226 / 0.1);
     --line-soft: rgb(234 228 226 / 0.12);
     --line-strong: rgb(234 228 226 / 0.18);
-    --checkbox-border: rgb(234 228 226 / 0.45);
     --outline: rgb(150 141 138 / 0.3);
 
     --font-body: "JetBrains Mono", monospace;
@@ -42,7 +41,6 @@
     --space-16: 4rem;
     --space-32: 8rem;
 
-    --checkbox-checkmark: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z' fill='%23d18c81'/%3e%3c/svg%3e");
   }
 }
 
@@ -634,23 +632,30 @@
 
   .content input[type="checkbox"] {
     appearance: none;
+    display: inline-grid;
+    place-content: center;
     width: 0.875rem;
     height: 0.875rem;
     margin: 0 0.5rem 0 0;
     vertical-align: -0.125rem;
-    background-color: var(--surface);
-    border: 1px solid var(--checkbox-border);
+    border: 1px solid var(--text-muted-faint);
     border-radius: 0.125rem;
-    color: var(--primary);
   }
 
   .content input[type="checkbox"]:checked {
-    background-color: var(--surface);
-    background-image: var(--checkbox-checkmark);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
     border-color: var(--primary);
+  }
+
+  .content input[type="checkbox"]:checked::before {
+    content: "check";
+    color: var(--primary);
+    font: 0.75rem / 1 "Material Symbols Outlined";
+    font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 20;
+  }
+
+  .content input[type="checkbox"]:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
   }
 }
 
