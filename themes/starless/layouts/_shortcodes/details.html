@@ -1,0 +1,10 @@
+{{- if and .IsNamedParams (.Get "summary") -}}
+<details class="details">
+  <summary>{{ .Get "summary" }}</summary>
+  <div class="details__body">
+    {{- .Inner | strings.TrimSpace | .Page.RenderString -}}
+  </div>
+</details>
+{{- else -}}
+  {{- errorf "The %q shortcode requires a non-empty summary argument: see %s" .Name .Position -}}
+{{- end -}}

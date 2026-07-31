@@ -56,3 +56,19 @@ print("Hello, world!")
 ```
 {{</* /code-tabs */>}}
 ````
+
+## Details
+
+{{< details summary="What is inside?" >}}
+Anything you can write in Markdown, hidden until it is useful.
+{{< /details >}}
+
+Use `details` for optional notes, spoilers, or long explanations.
+
+Example:
+
+```go-html-template
+{{</* details summary="What is inside?" */>}}
+Anything you can write in Markdown, hidden until it is useful.
+{{</* /details */>}}
+```

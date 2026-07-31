@@ -646,6 +646,28 @@
     font-style: italic;
   }
 
+  .content .details {
+    margin-block: var(--space-5);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+  }
+
+  .details summary {
+    cursor: pointer;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  .details__body {
+    display: flow-root;
+    margin-top: var(--space-2);
+  }
+
+  .details__body > :last-child {
+    margin-bottom: 0;
+  }
+
   .content :not(pre) > code {
     color: var(--primary);
     font-size: inherit;
