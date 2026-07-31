@@ -27,3 +27,32 @@ Example:
   place="right 35 8"
 */>}}
 ```
+
+## Code tabs
+
+{{< code-tabs >}}
+```js {title="JavaScript"}
+console.log("Hello, world!");
+```
+
+```python {title="Python"}
+print("Hello, world!")
+```
+{{< /code-tabs >}}
+
+Wrap fenced code blocks in `code-tabs` and give each one a `title`. The language
+is used as the title when `title` is missing.
+
+Example:
+
+````go-html-template
+{{</* code-tabs */>}}
+```js {title="JavaScript"}
+console.log("Hello, world!");
+```
+
+```python {title="Python"}
+print("Hello, world!")
+```
+{{</* /code-tabs */>}}
+````

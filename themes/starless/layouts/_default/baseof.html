@@ -53,6 +53,58 @@
         block.appendChild(button);
       });
 
+      document.querySelectorAll("[data-code-tabs]").forEach((group, groupIndex) => {
+        const panels = Array.from(group.children).filter((child) => child.classList.contains("highlight"));
+        if (!panels.length) return;
+
+        const tablist = document.createElement("div");
+        tablist.className = "code-tabs__tabs";
+        tablist.setAttribute("role", "tablist");
+        tablist.setAttribute("aria-label", "Code examples");
+
+        const tabs = panels.map((panel, index) => {
+          const tab = document.createElement("button");
+          const code = panel.querySelector("code");
+          tab.className = "code-tabs__tab";
+          tab.type = "button";
+          tab.textContent = panel.title || code?.dataset.lang || `Code ${index + 1}`;
+          tab.id = `code-tabs-${groupIndex}-tab-${index}`;
+          tab.setAttribute("role", "tab");
+          tab.setAttribute("aria-controls", `code-tabs-${groupIndex}-panel-${index}`);
+          panel.removeAttribute("title");
+          panel.id = `code-tabs-${groupIndex}-panel-${index}`;
+          panel.setAttribute("role", "tabpanel");
+          panel.setAttribute("aria-labelledby", tab.id);
+          tablist.appendChild(tab);
+          return tab;
+        });
+
+        const activate = (activeIndex, focus = false) => {
+          tabs.forEach((tab, index) => {
+            const active = index === activeIndex;
+            tab.setAttribute("aria-selected", active);
+            tab.tabIndex = active ? 0 : -1;
+            panels[index].hidden = !active;
+          });
+          if (focus) tabs[activeIndex].focus();
+        };
+
+        tabs.forEach((tab, index) => {
+          tab.addEventListener("click", () => activate(index));
+          tab.addEventListener("keydown", (event) => {
+            const offset = { ArrowLeft: -1, ArrowRight: 1 }[event.key];
+            if (offset === undefined && event.key !== "Home" && event.key !== "End") return;
+            event.preventDefault();
+            const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (index + offset + tabs.length) % tabs.length;
+            activate(next, true);
+          });
+        });
+
+        group.prepend(tablist);
+        group.classList.add("code-tabs--ready");
+        activate(0);
+      });
+
       (() => {
         const dialog = document.getElementById("search-dialog");
         const input = document.getElementById("search-input");
