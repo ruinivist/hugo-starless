@@ -6,8 +6,6 @@ math = true
 themePicker = true
 +++
 
-Use this page as a glance test for the Markdown pieces that show up most often.
-
 {{< theme-picker >}}
 
 ## Themes
