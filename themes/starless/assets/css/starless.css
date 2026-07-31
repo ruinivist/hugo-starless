@@ -96,6 +96,7 @@
 
   .highlight {
     position: relative;
+    display: flow-root;
   }
 
   .code-copy {
@@ -650,6 +651,14 @@
   .content pre {
     max-width: 100%;
     overflow-x: auto;
+  }
+
+  .content .highlight pre {
+    margin-block: 0;
+  }
+
+  .content .highlight {
+    margin-block: var(--space-5);
   }
 
   .content img {
