@@ -1,7 +1,7 @@
 +++
 title = "Customize"
 summary = "Quick settings to all the way..."
-weight = 3
+weight = 4
 +++
 
 ## A few options are exposed

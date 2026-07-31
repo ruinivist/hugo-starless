@@ -1,0 +1,46 @@
+{{- if .IsNamedParams -}}
+{{- range slice "src" "alt" "place" -}}
+  {{- if not (isset $.Params .) -}}
+    {{- errorf "The %q shortcode requires a %q argument: see %s" $.Name . $.Position -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $src := string (.Get "src") -}}
+{{- $alt := string (.Get "alt") -}}
+{{- if not $src -}}
+  {{- errorf "The %q shortcode requires a non-empty src: see %s" .Name .Position -}}
+{{- end -}}
+{{- $parts := split (replaceRE `\s+` " " (strings.TrimSpace (string (.Get "place")))) " " -}}
+{{- if or (lt (len $parts) 1) (gt (len $parts) 3) -}}
+  {{- errorf "The %q shortcode place must be 'direction [width] [shift]': see %s" .Name .Position -}}
+{{- end -}}
+
+{{- $direction := index $parts 0 -}}
+{{- if not (in (slice "left" "right" "center") $direction) -}}
+  {{- errorf "The %q shortcode direction must be left, right, or center: see %s" .Name .Position -}}
+{{- end -}}
+
+{{- $sizePattern := `^(?:0|(?:[0-9]+(?:\.[0-9]+)?|\.[0-9]+)(?:%|px|rem|em|vw|vh|ch)?)$` -}}
+{{- $unitlessPattern := `^(?:[0-9]+(?:\.[0-9]+)?|\.[0-9]+)$` -}}
+{{- $width := "40%" -}}
+{{- $shift := "0" -}}
+{{- if ge (len $parts) 2 }}{{ $width = index $parts 1 }}{{ end -}}
+{{- if eq (len $parts) 3 }}{{ $shift = index $parts 2 }}{{ end -}}
+{{- if not (findRE $sizePattern $width) -}}
+  {{- errorf "The %q shortcode has an invalid width %q: see %s" .Name $width .Position -}}
+{{- end -}}
+{{- if not (findRE $sizePattern $shift) -}}
+  {{- errorf "The %q shortcode has an invalid shift %q: see %s" .Name $shift .Position -}}
+{{- end -}}
+{{- if findRE $unitlessPattern $width }}{{ $width = printf "%s%%" $width }}{{ end -}}
+{{- if findRE $unitlessPattern $shift }}{{ $shift = printf "%s%%" $shift }}{{ end -}}
+
+{{- $url := $src -}}
+{{- with .Page.Resources.Get $src }}{{ $url = .RelPermalink }}{{ end -}}
+{{- $style := printf "--float-image-width: %s; --float-image-margin: -%s;" $width $shift -}}
+<figure class="float-image float-image--{{ $direction }}" style="{{ $style | safeCSS }}">
+  <img src="{{ $url }}" alt="{{ $alt }}">
+</figure>
+{{- else -}}
+  {{- errorf "The %q shortcode requires named arguments: see %s" .Name .Position -}}
+{{- end -}}

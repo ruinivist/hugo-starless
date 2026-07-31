@@ -185,6 +185,7 @@
 
 @layer components {
   .content {
+    display: flow-root;
     max-width: none;
     color: var(--text-soft);
     overflow-wrap: break-word;
@@ -657,6 +658,12 @@
     height: auto;
   }
 
+  .float-image {
+    width: 100%;
+    max-width: var(--float-image-width);
+    margin: var(--space-4) auto;
+  }
+
   .content table {
     width: 100%;
     border-collapse: collapse;
@@ -710,6 +717,18 @@
 }
 
 @layer responsive {
+  @media (min-width: 769px) {
+    .float-image--left {
+      float: left;
+      margin: 0 var(--space-8) var(--space-4) var(--float-image-margin);
+    }
+
+    .float-image--right {
+      float: right;
+      margin: 0 var(--float-image-margin) var(--space-4) var(--space-8);
+    }
+  }
+
   @media (min-width: 768px) {
     .search-panel {
       grid-template-columns: minmax(14rem, 24rem) 1fr;
