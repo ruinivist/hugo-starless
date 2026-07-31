@@ -204,6 +204,10 @@
     text-decoration: none;
   }
 
+  .content a {
+    text-decoration: underline;
+  }
+
   .page-link {
     display: inline-flex;
     align-items: center;

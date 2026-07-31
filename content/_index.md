@@ -6,4 +6,4 @@ hey hey!
 
 this is a theme inspired off of [Quartz](https://quartz.jzhao.xyz/) ( which I've been using for the longest time ) with way less bells and whistles and faster too (cause hugo)
 
-Try the [preview and themes](/docs/how-it-looks/) and if you like what you see, [install it](/docs/install/).
+See the [preview](/docs/how-it-looks/) and if you like what you see, [install it](/docs/install/).
