@@ -28,6 +28,23 @@ Example:
 */>}}
 ```
 
+## Page margin
+
+{{< page-margin >}}
+Some thoughts belong just off to the side.
+{{< /page-margin >}}
+
+Add a quiet aside beyond the right edge of the main text. It grows from `10rem`
+to `20rem` and disappears when the screen is too narrow to hold the margin.
+
+Example:
+
+```go-html-template
+{{</* page-margin */>}}
+Some thoughts belong just off to the side.
+{{</* /page-margin */>}}
+```
+
 ## Code tabs
 
 {{< code-tabs >}}

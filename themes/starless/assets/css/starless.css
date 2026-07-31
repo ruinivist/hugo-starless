@@ -646,6 +646,18 @@
     font-style: italic;
   }
 
+  .page-margin {
+    display: none;
+  }
+
+  .page-margin > :first-child {
+    margin-top: 0;
+  }
+
+  .page-margin > :last-child {
+    margin-bottom: 0;
+  }
+
   .content .details {
     margin-block: var(--space-5);
     padding: var(--space-3) var(--space-4);
@@ -803,6 +815,23 @@
 }
 
 @layer responsive {
+  @media (min-width: 92rem) {
+    .page-margin {
+      --page-margin-width: clamp(10rem, calc(50vw - 36rem), 20rem);
+
+      display: block;
+      float: right;
+      clear: right;
+      width: var(--page-margin-width);
+      margin: 0 calc(-4rem - var(--page-margin-width)) var(--space-5) 0;
+      padding-left: var(--space-4);
+      border-left: 1px solid var(--line-strong);
+      color: color-mix(in srgb, var(--text-muted) 80%, transparent);
+      font: var(--text-body);
+      font-style: italic;
+    }
+  }
+
   @media (min-width: 769px) {
     .float-image--left {
       float: left;
