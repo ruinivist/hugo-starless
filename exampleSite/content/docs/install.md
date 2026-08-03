@@ -1,12 +1,8 @@
-# starless
-
-> I think this is pretty much in a "done" state now. I don't want bloat
-
-a minimal hugo theme
-
-see it here: [starless.ruiny.de](https://starless.ruiny.de/)
-
-## install
++++
+title = "Install"
+summary = "Clone the repo and run Hugo."
+weight = 2
++++
 
 Create a Hugo site if you don't have one:
 
@@ -35,7 +31,3 @@ The JSON home output powers search. Then run:
 ```sh
 hugo server
 ```
-
-For config, see [customize](https://starless.ruiny.de/docs/customize/).
-
-For a preview and themes, see [preview & themes](https://starless.ruiny.de/docs/how-it-looks/).

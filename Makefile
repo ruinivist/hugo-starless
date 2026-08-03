@@ -1,10 +1,10 @@
 .PHONY: dev build deploy
 
 dev:
-	hugo server
+	cd exampleSite && hugo server
 
 build:
-	hugo --gc --minify
+	cd exampleSite && hugo --gc --minify --destination ../public
 
 deploy: build
 	wrangler pages deploy public --project-name=starless

@@ -2,7 +2,6 @@
 baseURL = "https://starless.ruiny.de/"
 locale = "en-us"
 title = "starless"
-theme = "starless"
 enableRobotsTXT = true
 disableHugoGeneratorInject = true
 enableGitInfo = true
@@ -24,3 +23,7 @@ inline = [["\\(", "\\)"]]
 description = "Starless is a small Hugo theme for dark, text first sites."
 sidebarFooter = "built with Hugo"
 homeFooter = "see you in another file!"
+
+[module]
+[[module.imports]]
+path = "github.com/ruinivist/hugo-starless"
