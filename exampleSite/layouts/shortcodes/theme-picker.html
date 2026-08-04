@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{ `css/chroma/evergarden.css` | relURL }}" data-chroma-theme="moss" disabled>
 <link rel="stylesheet" href="{{ `css/chroma/tokyonight-storm.css` | relURL }}" data-chroma-theme="ocean" disabled>
 <link rel="stylesheet" href="{{ `css/chroma/lake.css` | relURL }}" data-chroma-theme="lake" disabled>
+<link rel="stylesheet" href="{{ `css/chroma/zen.css` | relURL }}" data-chroma-theme="zen" disabled>
 <link rel="stylesheet" href="{{ `css/chroma/lovelace.css` | relURL }}" data-chroma-theme="blossom" disabled>
 <link rel="stylesheet" href="{{ `css/chroma/tokyonight-night.css` | relURL }}" data-chroma-theme="ink" disabled>
 <link rel="stylesheet" href="{{ `css/chroma/catppuccin-latte.css` | relURL }}" data-chroma-theme="frost" disabled>
@@ -141,6 +142,27 @@
     --outline: rgb(117 125 137 / 0.45);
   }
 
+  :root[data-theme="zen"] {
+    --surface: rgb(9 14 19);
+    --surface-low: rgb(28 30 37);
+    --surface-lowest-soft: rgb(9 14 19 / 0.95);
+    --surface-backdrop: rgb(9 14 19 / 0.86);
+    --text: rgb(197 201 199);
+    --text-soft: rgb(197 201 199 / 0.9);
+    --text-muted: rgb(164 167 164);
+    --text-muted-soft: rgb(164 167 164 / 0.7);
+    --text-muted-faint: rgb(113 124 124 / 0.6);
+    --text-underline: rgb(127 180 202 / 0.75);
+    --primary: rgb(127 180 202);
+    --primary-soft: rgb(127 180 202 / 0.65);
+    --primary-container: rgb(45 79 103);
+    --on-primary-container: rgb(242 241 239);
+    --line: rgb(197 201 199 / 0.1);
+    --line-soft: rgb(197 201 199 / 0.12);
+    --line-strong: rgb(197 201 199 / 0.18);
+    --outline: rgb(164 167 164 / 0.3);
+  }
+
   :root[data-theme="blossom"] {
     color-scheme: light;
     --surface: #eee8e9;
@@ -239,6 +261,7 @@
       <option value="moss" data-chroma-style="evergarden">moss</option>
       <option value="ocean" data-chroma-style="tokyonight-storm">ocean</option>
       <option value="lake" data-chroma-style="lake">lake</option>
+      <option value="zen" data-chroma-style="zen">zen</option>
       <option value="blossom" data-chroma-style="lovelace">blossom</option>
       <option value="ink" data-chroma-style="tokyonight-night">ink</option>
       <option value="frost" data-chroma-style="catppuccin-latte">frost</option>
