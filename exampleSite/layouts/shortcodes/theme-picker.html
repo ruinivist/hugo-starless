@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="{{ `css/chroma/lovelace.css` | relURL }}" data-chroma-theme="blossom" disabled>
 <link rel="stylesheet" href="{{ `css/chroma/tokyonight-night.css` | relURL }}" data-chroma-theme="ink" disabled>
 <link rel="stylesheet" href="{{ `css/chroma/catppuccin-latte.css` | relURL }}" data-chroma-theme="frost" disabled>
+<link rel="stylesheet" href="{{ `css/chroma/manni.css` | relURL }}" data-chroma-theme="betteroff" disabled>
 <link rel="stylesheet" href="{{ `css/chroma/rose-pine-dawn.css` | relURL }}" data-chroma-theme="classique-light" disabled>
 
 <style>
@@ -228,6 +229,28 @@
     --outline: rgb(89 101 119 / 0.28);
   }
 
+  :root[data-theme="betteroff"] {
+    color-scheme: light;
+    --surface: #e0e1da;
+    --surface-low: rgb(239 240 233);
+    --surface-lowest-soft: rgb(255 255 255 / 0.95);
+    --surface-backdrop: rgb(224 225 218 / 0.86);
+    --text: #171717;
+    --text-soft: rgb(53 54 48 / 0.9);
+    --text-muted: #80817a;
+    --text-muted-soft: rgb(128 129 122 / 0.7);
+    --text-muted-faint: rgb(128 129 122 / 0.6);
+    --text-underline: #91a29c;
+    --primary: #2f3026;
+    --primary-soft: rgb(47 48 38 / 0.65);
+    --primary-container: #fff23688;
+    --on-primary-container: #353630;
+    --line: #afb0a9;
+    --line-soft: rgb(175 176 169 / 0.65);
+    --line-strong: rgb(128 129 122 / 0.55);
+    --outline: #525a6480;
+  }
+
   :root[data-theme="classique-light"] {
     color-scheme: light;
     --surface: rgb(241 236 233);
@@ -265,6 +288,7 @@
       <option value="blossom" data-chroma-style="lovelace">blossom</option>
       <option value="ink" data-chroma-style="tokyonight-night">ink</option>
       <option value="frost" data-chroma-style="catppuccin-latte">frost</option>
+      <option value="betteroff" data-chroma-style="manni">betteroff</option>
       <option value="classique-light" data-chroma-style="rose-pine-dawn">classique light</option>
     </select>
   </label>
