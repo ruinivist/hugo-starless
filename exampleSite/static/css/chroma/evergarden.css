@@ -49,6 +49,7 @@
 /* LiteralNumberOct */ .chroma .mo { color:#d699b6 }
 /* Operator */ .chroma .o { color:#7a8478 }
 /* OperatorWord */ .chroma .ow { color:#7a8478 }
+/* OperatorReserved */ .chroma .or { color:#7a8478 }
 /* Comment */ .chroma .c { color:#859289;font-style:italic }
 /* CommentHashbang */ .chroma .ch { color:#859289;font-style:italic }
 /* CommentMultiline */ .chroma .cm { color:#859289;font-style:italic }
@@ -62,5 +63,7 @@
 /* GenericHeading */ .chroma .gh { color:#d699b6;font-weight:bold }
 /* GenericInserted */ .chroma .gi { color:#252b2e;background-color:#b2c98f }
 /* GenericOutput */ .chroma .go { color:#6e8585 }
+/* GenericPrompt */ .chroma .gp { color:#d6cbb4 }
+/* GenericStrong */ .chroma .gs { color:#d6cbb4 }
 /* GenericSubheading */ .chroma .gu { color:#b2c98f;font-weight:bold }
 /* GenericTraceback */ .chroma .gt { background-color:#e67e80;font-weight:bold }
