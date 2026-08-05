@@ -25,7 +25,7 @@ style = "gruvbox"
 
 [params]
 # meta description
-description = "Starless is a small Hugo theme for dark, text first sites."
+description = "Starless is a minimal hugo theme for seldom updated blogs"
 
 # sidebar footer
 sidebarFooter = "built with Hugo"

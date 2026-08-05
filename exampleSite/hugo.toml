@@ -20,7 +20,7 @@ block = [["$$", "$$"]]
 inline = [["\\(", "\\)"]]
 
 [params]
-description = "Starless is a small Hugo theme for dark, text first sites."
+description = "Starless is a minimal hugo theme for seldom updated blogs"
 sidebarFooter = "built with Hugo"
 homeFooter = "see you in another file!"
 

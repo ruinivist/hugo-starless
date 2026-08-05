@@ -1,6 +1,7 @@
 # starless
 
-> I think this is pretty much in a "done" state now. I don't want bloat
+> I think this is pretty much in a "done" state now. I don't want bloat but suggestions
+> within the same aesthetic are welcome
 
 a minimal hugo theme
 
@@ -39,3 +40,13 @@ hugo server
 For config, see [customize](https://starless.ruiny.de/docs/customize/).
 
 For a preview and themes, see [preview & themes](https://starless.ruiny.de/docs/how-it-looks/).
+
+## screens
+
+![vermillion-skies-theme](exampleSite/screens/skies.png)
+
+![frost](exampleSite/screens/frost.png)
+
+![moss](exampleSite/screens/moss.png)
+
+![lake](exampleSite/screens/lake.png)
