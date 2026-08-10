@@ -844,7 +844,7 @@
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 850px) {
     .search-panel {
       grid-template-columns: minmax(14rem, 24rem) 1fr;
     }
@@ -863,7 +863,7 @@
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 850px) {
     .site-shell {
       flex-direction: column;
       gap: var(--space-8);
